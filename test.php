@@ -9,7 +9,7 @@
 </html>
 <?php
 /*
-	$a = "hello";
+	$a = "hello there";
 	$hello = "samir";
 	echo '$a= '.$a."<br>";
 	echo '$$a= '.$$a."<br>";
@@ -19,7 +19,7 @@
 	print print print "hh";//hh11
 
 $ourFileName = "here/yesaa.txt";
-$ourFileHandle = fopen($ourFileName, 'w') or die("can't opppen file");
+$ourFileHandle = fopen($ourFileName, 'w') or die("can't oppen file");
 echo fwrite($ourFileHandle,"Hello World. Testing!");
 fclose($ourFileHandle);
 
