@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<MyCheckout_Override>
+			<version>0.1.0</version>
+		</MyCheckout_Override>
+	</modules>
+	<frontend>
+		<routers>
+			<checkout>
+				<args>
+					<modules>
+						<MyCheckout_Override before="Mage_Checkout">MyCheckout_Override</MyCheckout_Override>
+					</modules>
+				</args>
+			</checkout>
+		</routers>
+	</frontend>
+</config>

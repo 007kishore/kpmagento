@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<NC_NewProcess>
+			<version>0.1.0</version>
+		</NC_NewProcess>
+	</modules>
+	<frontend>
+		<routers>
+			<customer>
+				<args>
+					<modules>
+						<NC_NewProcess before="Mage_Customer">NC_NewProcess</NC_NewProcess>
+					</modules>
+				</args>
+			</customer>
+		</routers>
+	</frontend>
+</config>

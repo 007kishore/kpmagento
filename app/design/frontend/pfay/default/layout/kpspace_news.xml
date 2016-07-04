@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Kpspace_News extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Kpspace
+ * @package        Kpspace_News
+ * @copyright      Copyright (c) 2016
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<layout>
+    
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" module="kpspace_news"><name>newstbl_comments</name><path>kpspace_news/newstbl_customer_comment</path><label>NewsItems Comments</label></action>
+        </reference>
+    </customer_account>
+    <kpspace_news_newstbl_index translate="label" module="kpspace_news">
+        <label>NewsItems list</label>
+        <update handle="page_two_columns_left" />
+        <reference name="content">
+            <block type="kpspace_news/newstbl_list" name="newstbl_list" template="kpspace_news/newstbl/list.phtml" />
+        </reference>
+    </kpspace_news_newstbl_index>
+    <kpspace_news_newstbl_view translate="label" module="kpspace_news">
+        <label>NewsItem view page</label>
+        <update handle="page_two_columns_left" />
+        <reference name="content">
+            <block type="kpspace_news/newstbl_view" name="newstbl_view" template="kpspace_news/newstbl/view.phtml" />
+            <block type="kpspace_news/newstbl_comment_list" name="newstbl.comments_list" as="newstbl_comment_list" template="kpspace_news/newstbl/comment/list.phtml">
+                <block type="kpspace_news/newstbl_comment_form" name="comment_form" as="comment_form" template="kpspace_news/newstbl/comment/form.phtml" />
+            </block>
+        </reference>
+    </kpspace_news_newstbl_view>
+    <kpspace_news_newstbl_rss translate="label" module="kpspace_news">
+        <label>NewsItems rss feed</label>
+        <block type="kpspace_news/newstbl_rss" output="toHtml" name="kpspace_news.newstbl.rss" />
+    </kpspace_news_newstbl_rss>
+    <rss_index_index>
+        <reference name="content">
+            <block type="kpspace_news/rss" name="news.rss" template="kpspace_news/rss.phtml">
+                <action method="addFeed" ifconfig="kpspace_news/newstbl/rss" translate="label" module="kpspace_news">
+                    <label>NewsItems</label>
+                    <url helper="kpspace_news/newstbl/getRssUrl" />
+                </action>
+            </block>
+        </reference>
+    </rss_index_index>
+    <kpspace_news_newstbl_customer_comment_index translate="label" module="kpspace_news">
+        <label>My NewsItems comments</label>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="kpspace_news/newstbl_customer_comment_list" name="customer_newstbl_comments" template="kpspace_news/newstbl/customer/comment/list.phtml"/>
+        </reference>
+    </kpspace_news_newstbl_customer_comment_index>
+    <kpspace_news_newstbl_customer_comment_view translate="label" module="kpspace_news">
+        <label>My NewsItems comment view</label>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="kpspace_news/newstbl_customer_comment_view" name="customer_newstbl_comment" template="kpspace_news/newstbl/customer/comment/view.phtml"/>
+        </reference>
+    </kpspace_news_newstbl_customer_comment_view>
+</layout>

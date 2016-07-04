@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Mob_Customcustomer>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Mob_Customcustomer>
+	</modules>
+</config>

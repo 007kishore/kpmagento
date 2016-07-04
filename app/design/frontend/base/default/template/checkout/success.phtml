@@ -1,0 +1,211 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('Your order has been received.') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<h2 class="sub-title"><?php echo $this->__('Thank you for your purchase!') ?></h2>
+
+<?php if ($this->getOrderId()):?>
+<?php if ($this->getCanViewOrder()) :?>
+    <p><?php echo $this->__('Your order # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
+<?php  else :?>
+    <p><?php echo $this->__('Your order # is: %s.', $this->escapeHtml($this->getOrderId())) ?></p>
+<?php endif;?>
+    <p><?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress.') ?></p>
+<?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
+    <p>
+        <?php echo $this->__('Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.', $this->getPrintUrl()) ?>
+        <?php //echo $this->getChildHtml() ?>
+    </p>
+<?php endif;?>
+<?php endif;?>
+
+<?php if ($this->getAgreementRefId()): ?>
+    <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+<?php endif;?>
+
+<?php if ($profiles = $this->getRecurringProfiles()):?>
+<p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+<ul class="disc">
+<?php foreach($profiles as $profile):?>
+<?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+    <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
+<?php endforeach;?>
+</ul>
+<?php endif;?>
+
+<div class="buttons-set">
+    <button type="button" class="button" title="<?php echo $this->__('Continue Shopping') ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+</div>
+
+
+
+
+
+<h1>.............................................................................................................</h1>
+
+
+
+
+<?php 
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<section class="clearfix">
+<header class="clearfix"  style="padding-bottom: 0px;">
+        <h1 class="fl"><?php echo $this->__('ORDER CONFIRMATION') ?></h1>
+</header>
+    <div class="copy">
+        <?php //echo $this->getlayout()->createblock('checkout/onepage_hello')->setTemplate('checkout/onepage/hello.phtml')->toHtml(); ?>
+
+        <?php echo $this->getChildHtml("onepagehello");?>
+    </div>
+    
+    
+    <?php $order_id = Mage::getSingleton('checkout/session')->getLastRealOrderId();
+        $order_details  = Mage::getModel('sales/order')->loadByIncrementId($order_id);
+        $shipping_address_data = $order_details->getShippingAddress();
+    ?>
+
+
+
+    <div class="order-confirmation-details">
+        <div class="order-confirmation-header">
+            <span>Order information</span>
+        </div>
+        <dl>
+          <dt>Order number:</dt><dd><?php echo $order_id; ?></dd>
+          <dt>Order date:</dt><dd><?php //echo $order_details->getCreatedAtStoreDate()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT); ?></dd>
+          <dt>Name:</dt><dd><?php echo $shipping_address_data['firstname']." ".$shipping_address_data['lastname']; ?></dd>
+          <dt>Email:</dt><dd><?php echo $shipping_address_data['email']; ?></dd>
+          <hr>
+          <dt>Address line 1:</dt><dd><?php echo $shipping_address_data['street']; ?></dd>
+          <dt>Address line 2:</dt><dd><?php echo $shipping_address_data['region']; ?></dd>
+          <dt>Address line 3:</dt><dd><?php echo $shipping_address_data['country_id']; ?></dd>
+          <dt>Address line 4:</dt><dd><?php echo $shipping_address_data['country_id']; ?></dd>
+          <dt>City</dt><dd><?php echo $shipping_address_data['city']; ?></dd>
+          <dt>Postcode:</dt> <dd><?php echo $shipping_address_data['postcode']; ?></dd>
+          <dt>County:</dt><dd><?php echo $shipping_address_data['country_id']; ?></dd>
+          <dt>Country:</dt><dd><?php echo $shipping_address_data['country_id']; ?></dd>
+          <dt>Phone number:</dt><dd><?php echo $shipping_address_data['telephone']; ?></dd>
+        </dl>
+    </div>    
+
+
+    <div class="basket generic-form clearfix">
+        <div class="basket-header">
+            <span>Order Summary</span>
+        </div>
+        <table width="100%" border="0">
+            <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
+            <tbody>
+                <tr class="item">
+                    <?php foreach ($order_details->getAllItems() as $item) {
+                        $configItem = Mage::getModel('catalog/product')->loadByAttribute('sku', $item->getSku());
+                        $source = $this->helper('catalog/image')->init($configItem, 'small_image')->resize(200); 
+                        $alt    = $this->getImageLabel($configItem, 'small_image');
+                    ?>
+                    <td>
+                        <a href="#" class="product-image">
+                            <img src="<?php echo $source; ?>" width="200" height="200" class="media-object img-responsive" alt="<?php echo $alt; ?>"/> 
+                        </a>
+                    </td>
+                    <td><span><?php echo $item->getName(); ?></p></span>
+                    <td class="a-right"></td>
+                    <td class="a-right"><span class="cart-price"><?php echo Mage::helper("core")->currency($item->getPrice()); ?></span></td>
+                </tr>
+                <?php } ?>
+                
+                <tr class="subtotal-before-delivery no-table-border">
+                       <td colspan="3">Subtotal before delivery charges (ex. VAT)</td>
+                       <td>
+                          <span class="amount"><?php echo Mage::helper("core")->currency($order_details->subtotal); ?></span>
+                       </td>
+                </tr>
+                <tr class="no-table-border">
+                   <td class="basket-charges top-padding" colspan="3">
+                      Subtotal:
+                   </td>
+                   <td class="basket-charges top-padding">
+                      <span class="amount"><?php echo Mage::helper("core")->currency($order_details->subtotal); ?></span>
+                   </td>
+                </tr>
+                <tr class="no-table-border" onclick="expandDetails(this, '.summary-details-1')">
+                   <td class="basket-charges" colspan="3">
+                      <div class="summary-collapse">VAT:</div>
+                   </td>
+                   <td class="basket-charges">
+                       <span class="amount"><?php echo Mage::helper("core")->currency($order_details->tax_amount);?></span>
+                   </td>
+                </tr>
+                <tr class="no-table-border">
+                   <td class="basket-charges basket-total" colspan="3">
+                      <strong>Total:</strong>
+                   </td>
+                   <td class="basket-total basket-charges">
+                      <strong><?php echo Mage::helper("core")->currency($order_details->getData('base_grand_total')); ?></strong>
+                   </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    
+    <div class="faq">
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('faq')->toHtml();?>
+    </div>
+    
+    <div class="clearfix secondary-content-right">
+        <div class="any-questions-cta sidebar-cta">
+          <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('any_question')->toHtml();?>
+        </div>
+    </div>
+    
+    </section>

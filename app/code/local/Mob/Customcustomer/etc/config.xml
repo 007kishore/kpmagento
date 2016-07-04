@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	<modules>
+		<Mob_Customcustomer>
+			<version>0.1.0</version>
+		</Mob_Customcustomer>
+	</modules>
+	<frontend>
+		<routers>
+			<customer>
+				<args>
+					<modules>
+						<Mob_Customcustomer before="Mage_Customer">Mob_Customcustomer</Mob_Customcustomer>
+					</modules>
+				</args>
+			</customer>
+		</routers>
+	</frontend>
+</config>

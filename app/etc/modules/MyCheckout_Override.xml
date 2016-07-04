@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<MyCheckout_Override>
+			<active>true</active>
+			<codePool>local</codePool>
+		</MyCheckout_Override>
+	</modules>
+</config>

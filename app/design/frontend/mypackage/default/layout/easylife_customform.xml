@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+	<customform_index_index translate="label" module="customform">
+		<translate>Custom Form</translate>
+		<reference name="root">
+			<action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+		</reference>
+		<reference name="content">
+			<block type="core/template" name="customform" template="easylife_customform/form.phtml"/>
+		</reference>
+	</customform_index_index>
+</layout>

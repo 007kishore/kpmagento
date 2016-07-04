@@ -1,0 +1,47 @@
+<?php 
+/**
+ * Kpspace_News extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Kpspace
+ * @package        Kpspace_News
+ * @copyright      Copyright (c) 2016
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+/**
+ * NewsItem list template
+ *
+ * @category    Kpspace
+ * @package     Kpspace_News
+ * @author      Ultimate Module Creator
+ */
+?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php $_newstbls = $this->getNewstbls(); ?>
+<div class="page-title newstbl-title">
+    <?php if (Mage::helper('kpspace_news/newstbl')->isRssEnabled()) : ?>
+        <a href="<?php echo Mage::helper('kpspace_news/newstbl')->getRssUrl();?>" class="link-rss"><?php echo Mage::helper('kpspace_news')->__('Subscribe to RSS Feed')?></a>
+    <?php endif;?>
+    <h1><?php echo Mage::helper('kpspace_news')->__('NewsItems') ?></h1>
+</div>
+<?php if ($_newstbls->getSize() > 0) :?>
+    <?php echo $this->getPagerHtml(); ?>
+    <div class="newstbl-list-container">
+    <?php foreach ($_newstbls as $_newstbl) : ?>
+        <div class="newstbl-list-item">
+            <a href="<?php echo $_newstbl->getNewstblUrl()?>">
+                <?php echo $_newstbl->getHeading();?>
+            </a><br />
+        </div>
+    <?php endforeach;?>
+    </div>
+    <?php echo $this->getPagerHtml(); ?>
+<?php else : ?>
+    <?php echo Mage::helper('kpspace_news')->__('There are no newsitems at this moment');?>
+<?php endif;?>

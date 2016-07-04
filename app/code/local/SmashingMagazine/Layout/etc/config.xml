@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<SmashingMagazine_Layout>
+			<version>0.1.0</version>
+		</SmashingMagazine_Layout>
+	</modules>
+	<global>
+
+		<!-- we are adding a new block definition -->
+		<blocks>
+
+			<!-- a unique short name for our block files -->
+			<smashingmagazine_layout>
+
+				<!-- the location of our module's blocks -->
+				<class>SmashingMagazine_Layout_Block</class>
+			</smashingmagazine_layout>
+		</blocks>
+	</global>
+	<!-- we are making changes to the layout -->
+	<frontend>
+		<!-- we are adding a new update file -->
+		<layout>
+			<updates>
+				<!-- 
+                   this child node name must be
+                   unique throughout Magento
+                -->
+                <smashingmagazine_layout>
+                    
+                    <!-- the name of the layout file we are adding -->
+                    <file>smashingmagazine_layout.xml</file>
+                    
+                </smashingmagazine_layout>
+			</updates>
+		</layout>
+	</frontend>
+</config>

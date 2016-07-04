@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<SmashingMagazine_LogProductUpdate>
+			<version>0.1.0</version>
+		</SmashingMagazine_LogProductUpdate>
+	</modules>
+	<global>
+
+		<!-- Defining Model -->
+		<models>
+			<!--
+         Unique identifier in the model's node.
+         By convention, we put the module's name in lowercase.
+      -->
+      <smashingmagazine_logproductupdate>
+      	<!--
+             The path to our models directory, with directory
+             separators replaced by underscores
+          -->
+          <class>SmashingMagazine_LogProductUpdate_Model</class>
+      </smashingmagazine_logproductupdate>
+		</models>
+		<events>
+			<catalog_product_save_after>
+				<observers>
+					<!--
+             Unique identifier within the
+             catalog_product_save_after node.
+             By convention, we write the module's
+             name in lowercase.
+          -->
+          <smashingmagazine_logproductupdate>
+          	<!-- The model to be instantiated -->
+          	<class>smashingmagazine_logproductupdate/observer</class>
+
+          	<!-- The method of the class to be called -->
+          	<method>logUpdate</method>
+
+          	<!-- The type of class to instantiate -->
+          	<type>singleton</type>
+          </smashingmagazine_logproductupdate>
+				</observers>
+			</catalog_product_save_after>
+		</events>
+	</global>
+</config>

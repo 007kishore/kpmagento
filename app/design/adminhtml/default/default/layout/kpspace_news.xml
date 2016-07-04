@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Kpspace_News extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Kpspace
+ * @package        Kpspace_News
+ * @copyright      Copyright (c) 2016
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+--> 
+<layout>
+    <adminhtml_news_newstbl_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>kpspace_news/newstbl</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="kpspace_news/adminhtml_newstbl" name="newstbl" />
+
+        </reference>
+    </adminhtml_news_newstbl_index>
+    <adminhtml_news_newstbl_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="kpspace_news/adminhtml_newstbl_grid" name="newstbl_grid"/>
+        </block>
+    </adminhtml_news_newstbl_grid>
+    <!-- Newstbl add/edit action -->
+    <adminhtml_news_newstbl_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>kpspace_news/newstbl</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="kpspace_news/adminhtml_newstbl_edit" name="newstbl_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="kpspace_news/adminhtml_newstbl_edit_tabs" name="newstbl_tabs"></block>
+        </reference>
+    </adminhtml_news_newstbl_edit>
+
+    <adminhtml_news_newstbl_comment_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>kpspace_news/newstbl_comment</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="kpspace_news/adminhtml_newstbl_comment" name="newstbl_comment_grid"/>
+        </reference>
+    </adminhtml_news_newstbl_comment_index>
+    <adminhtml_news_newstbl_comment_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="kpspace_news/adminhtml_newstbl_comment_grid" name="newstbl_comment_grid"/>
+        </block>
+    </adminhtml_news_newstbl_comment_grid>
+    <adminhtml_news_newstbl_comment_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>kpspace_news/newstbl_comment</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="kpspace_news/adminhtml_newstbl_comment_edit" name="newstbl_comment_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="kpspace_news/adminhtml_newstbl_comment_edit_tabs" name="newstbl_comment_tabs"></block>
+        </reference>
+    </adminhtml_news_newstbl_comment_edit>
+</layout>

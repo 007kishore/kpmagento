@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+
+    <default>
+        <reference name="before_body_end">
+            <block type="addblock/myblock" name="ab.myblock" template="addblock/myblock.phtml" /> <!-- it will include myblock.phtml in all pages  -->
+        </reference>
+    </default>
+    <addblock_index_index>
+        <reference name="content">
+            <block type="addblock/myblock" name="xyz" template="addblock/myblock.phtml"/><!-- these phtml files are included only in the page http://kishore.afixiindia.com/magento1.7/index.php/addblock  -->
+            <block type="core/template" name="newfile" template="addblock/newfile.phtml" />
+            <block type="core/template" name="outfile" template="outerfile.phtml" />
+        </reference>
+    </addblock_index_index>
+    
+    <checkout_cart_index>
+        <reference name="before_body_end">
+            <block type="addblock/myblock" name="mynewblock" template="addblock/myblock.phtml" /><!-- this is including only in cart page -->
+        </reference>
+    </checkout_cart_index>
+
+</layout>

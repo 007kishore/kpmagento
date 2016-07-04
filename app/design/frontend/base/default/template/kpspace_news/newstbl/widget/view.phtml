@@ -1,0 +1,36 @@
+<?php
+/**
+ * Kpspace_News extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Kpspace
+ * @package        Kpspace_News
+ * @copyright      Copyright (c) 2016
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+/**
+ * NewsItem view widget template
+ *
+ * @category    Kpspace
+ * @package     Kpspace_News
+ * @author      Ultimate Module Creator
+ */
+?>
+<?php $_newstbl = $this->getCurrentNewstbl();?>
+<?php if ($_newstbl) :?>
+    <div class="newstbl-widget-view">
+        <h3><?php echo $_newstbl->getHeading()?></h3>
+        <div>
+            <div class="heading-widget">
+                <?php echo Mage::helper('kpspace_news')->__('Heading');?>:<?php echo $_newstbl->getHeading();?>
+            </div>
+
+        </div>
+    </div>
+<?php endif;?>

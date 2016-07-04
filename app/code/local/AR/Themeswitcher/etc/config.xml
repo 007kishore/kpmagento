@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <AR_Themeswitcher>
+            <version>1.0.0</version>
+        </AR_Themeswitcher>
+    </modules>
+    <global>
+        <blocks>
+            <themeswitcher>
+                <class>AR_Themeswitcher_Block</class>
+            </themeswitcher>
+        </blocks>
+        <models>
+            <themeswitcher>
+                <class>AR_Themeswitcher_Model</class>
+            </themeswitcher>
+            <core>
+                <rewrite>
+                    <design_package>AR_Themeswitcher_Model_Core_Design_Package</design_package>
+                </rewrite>
+            </core>
+        </models>
+        <helpers>
+            <themeswitcher>
+                <class>AR_Themeswitcher_Helper</class>
+            </themeswitcher>
+        </helpers>
+    </global>
+    <frontend>
+        <routers>
+            <themeswitcher>
+                <use>standard</use>
+                <args>
+                    <module>AR_Themeswitcher</module>
+                    <frontName>themeswitcher</frontName>
+                </args>
+            </themeswitcher>
+        </routers>
+    </frontend>
+</config>

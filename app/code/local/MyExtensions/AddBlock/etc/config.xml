@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <MyExtensions_AddBlock>
+            <version>0.1.0</version>
+        </MyExtensions_AddBlock>
+    </modules>
+    <global>
+        <blocks>
+            <addblock>
+                <class>MyExtensions_AddBlock_Block</class>
+            </addblock>
+        </blocks>
+    </global>
+    <frontend>
+        <routers>
+            <addblock>
+                    <use>standard</use>
+                    <args>
+                        <module>MyExtensions_AddBlock</module>
+                        <frontName>addblock</frontName> <!--url key for module -->
+                    </args>
+            </addblock>
+        </routers>
+        <layout>
+            <updates>
+                <addblock>
+                    <file>addblock.xml</file>
+                </addblock>
+            </updates>
+        </layout>
+    </frontend>
+</config>
