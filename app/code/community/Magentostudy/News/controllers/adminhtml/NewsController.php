@@ -158,8 +158,7 @@ class Magentostudy_News_adminhtml_NewsController extends Mage_adminhtml_Controll
 				$model = Mage::getModel('magentostudy_news/news');
 				$model->load($itemId);
 				if (!$model->getId()) {
-				Mage::throwException(Mage::helper('magentostudy_news')-
-				>__('Unable to find a news item.'));
+				Mage::throwException(Mage::helper('magentostudy_news')->__('Unable to find a news item.'));
 				}
 				$model->delete();
 				// display success message
