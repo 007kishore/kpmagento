@@ -1,0 +1,35 @@
+# Magento 
+/.htaccess
+/.htpasswd
+
+
+
+# svn & cvs
+.svn
+
+# Node / Grunt
+node_modules/
+Gruntfile.js
+
+
+# Sublime Text
+# workspace files are user-specific
+*.sublime-workspace
+
+# project files should be checked into the repository, unless a significant
+# proportion of contributors will probably not be using SublimeText
+*.sublime-project
+.magentointel-cache
+
+
+
+
+#Netbeans
+nbproject/private/
+nbbuild/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+project.xml
+project.properties
+
