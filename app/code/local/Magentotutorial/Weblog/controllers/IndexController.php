@@ -1,12 +1,14 @@
 <?php
 Class Magentotutorial_Weblog_IndexController extends Mage_Core_Controller_Front_Action{
     public function testModelAction(){
-        $params = $this->getRequest()->getParams();
-        $blogpost = Mage::getModel('weblog/blogpost');
+        $params     = $this->getRequest()->getParams();
+        $blogpost   = Mage::getModel('weblog/blogpost');
+        //echo get_class($blogpost);exit;
+        echo("Loading the blogpost with an ID of ".$params['id']);
         echo "your post id is ".$params['id'];
         $blogpost ->load($params['id']);
-        $data = $blogpost->getData();
-        $title = $blogpost->getData('title');
+        $data       = $blogpost->getData();
+        $title      = $blogpost->getData('title');
         echo $title;
         echo "<pre>";print_r($data);echo "</pre>";
         var_dump($data);
@@ -14,10 +16,10 @@ Class Magentotutorial_Weblog_IndexController extends Mage_Core_Controller_Front_
     
     public function createNewPostAction(){
         $blogpost = Mage::getModel('weblog/blogpost');
-        $blogpost->setTitle('Decrease HDI in India');
-        $blogpost->setPost('The current HDI of India is 135 where as of Srilanka, it is 37. This is why we should clear about "make in India" concept introduced by PMO,Mr. Narendra Modi');
+        $blogpost->setTitle('Welcome to the new Era');
+        $blogpost->setPost('It is the new era of the coming ancestor. It will change the whole world at its feet.');
         $blogpost->save();
-        echo "The last inserted Id is = ".$blogpost->getId();
+        echo "The last inserted Id is :: ".$blogpost->getId();
     }
     
     public function editFirstPostAction(){

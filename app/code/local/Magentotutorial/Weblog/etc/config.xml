@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Magentotutorial_Weblog>
-            <version>0.2.0</version>
+            <version>0.1.0</version>
         </Magentotutorial_Weblog>
     </modules>
     <frontend>
@@ -20,7 +20,7 @@
         <models>
             <weblog><!-- it is the group name which should match to the module name -->
                 <class>Magentotutorial_Weblog_Model</class>
-                <resourceModel>weblog_resource</resourceModel><!--Resource model -->
+                <resourceModel>weblog_resource</resourceModel> <!-- resourceModel indicates which Resource Model that weblog group Models should use -->
             </weblog>
             <weblog_resource>
                 <class>Magentotutorial_Weblog_Model_Resource</class>
